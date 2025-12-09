@@ -1,0 +1,501 @@
+index.html
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <title>메르세데스-벤츠 W140 소개</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        sans-serif;
+      line-height: 1.6;
+      color: #222;
+      background: #f4f4f7;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    header {
+      background: linear-gradient(135deg, #0f172a, #1f2937);
+      color: #f9fafb;
+      padding: 32px 24px;
+      border-bottom: 1px solid rgba(148, 163, 184, 0.4);
+    }
+
+    .container {
+      max-width: 1024px;
+      margin: 0 auto;
+    }
+
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+    }
+
+    .nav-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #e5e7eb;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 16px;
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .nav-links a:hover {
+      opacity: 1;
+      text-decoration: underline;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2.4fr);
+      gap: 32px;
+      align-items: center;
+    }
+
+    .hero-title {
+      font-size: 2.4rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      letter-spacing: 0.03em;
+    }
+
+    .hero-subtitle {
+      font-size: 1rem;
+      color: #e5e7eb;
+      margin-bottom: 18px;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(15, 118, 110, 0.16);
+      color: #a7f3d0;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      margin-bottom: 10px;
+    }
+
+    .hero-meta {
+      display: flex;
+      gap: 16px;
+      font-size: 0.85rem;
+      margin-top: 12px;
+      color: #cbd5f5;
+      flex-wrap: wrap;
+    }
+
+    .hero-meta span {
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.85);
+      border: 1px solid rgba(148, 163, 184, 0.4);
+    }
+
+    .hero-image {
+      border-radius: 24px;
+      background: radial-gradient(circle at 10% 0%, #111827 0, #020617 60%);
+      border: 1px solid rgba(148, 163, 184, 0.55);
+      box-shadow: 0 18px 45px rgba(15, 23, 42, 0.7);
+      padding: 18px 18px 22px;
+    }
+
+    .car-silhouette {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      border-radius: 18px;
+      background: linear-gradient(120deg, #020617, #0b1120);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .car-body {
+      position: absolute;
+      inset: 0;
+      margin: auto;
+      width: 82%;
+      height: 42%;
+      border-radius: 18px 18px 16px 16px;
+      border: 2px solid rgba(148, 163, 184, 0.7);
+      border-top-width: 3px;
+      top: 36%;
+      left: 50%;
+      transform: translateX(-50%);
+      box-shadow: 0 0 40px rgba(148, 163, 184, 0.3);
+    }
+
+    .car-window {
+      position: absolute;
+      width: 68%;
+      height: 32%;
+      top: -34%;
+      left: 16%;
+      border-radius: 18px 18px 8px 8px;
+      border: 2px solid rgba(148, 163, 184, 0.7);
+      border-bottom: none;
+    }
+
+    .car-wheel {
+      position: absolute;
+      bottom: -22px;
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      border: 4px solid rgba(148, 163, 184, 0.9);
+      background: radial-gradient(circle, #020617 0, #020617 50%, #0f172a 52%);
+      box-shadow: 0 0 18px rgba(148, 163, 184, 0.6);
+    }
+
+    .car-wheel.left {
+      left: 12%;
+    }
+
+    .car-wheel.right {
+      right: 12%;
+    }
+
+    .car-line {
+      position: absolute;
+      height: 2px;
+      width: 280px;
+      background: linear-gradient(
+        to right,
+        transparent,
+        rgba(148, 163, 184, 0.8),
+        transparent
+      );
+      bottom: 14%;
+      left: 50%;
+      transform: translateX(-50%);
+      opacity: 0.6;
+    }
+
+    .hero-image-footer {
+      margin-top: 12px;
+      font-size: 0.8rem;
+      color: #9ca3af;
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    main {
+      padding: 32px 24px 40px;
+    }
+
+    section {
+      margin-bottom: 32px;
+    }
+
+    h2 {
+      font-size: 1.3rem;
+      margin-bottom: 10px;
+      font-weight: 600;
+      color: #111827;
+    }
+
+    .section-subtitle {
+      font-size: 0.9rem;
+      color: #6b7280;
+      margin-bottom: 10px;
+    }
+
+    .card-grid {
+      display: grid;
+      gap: 16px;
+    }
+
+    .card {
+      border-radius: 16px;
+      background: #ffffff;
+      padding: 16px 18px;
+      box-shadow: 0 10px 25px rgba(15, 23, 42, 0.05);
+      border: 1px solid rgba(209, 213, 219, 0.7);
+    }
+
+    .card h3 {
+      font-size: 1rem;
+      margin-bottom: 6px;
+      font-weight: 600;
+      color: #111827;
+    }
+
+    .card p {
+      font-size: 0.9rem;
+      color: #4b5563;
+    }
+
+    .history-timeline {
+      border-left: 2px solid #e5e7eb;
+      margin-top: 8px;
+      padding-left: 16px;
+    }
+
+    .history-item {
+      margin-bottom: 10px;
+      position: relative;
+    }
+
+    .history-item::before {
+      content: "";
+      position: absolute;
+      left: -21px;
+      top: 3px;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #0f766e;
+      box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.18);
+    }
+
+    .history-year {
+      font-weight: 600;
+      font-size: 0.85rem;
+      color: #0f172a;
+      margin-bottom: 2px;
+    }
+
+    .history-desc {
+      font-size: 0.86rem;
+      color: #4b5563;
+    }
+
+    .specs-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1.2fr);
+      gap: 18px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.86rem;
+      background: #ffffff;
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid rgba(209, 213, 219, 0.8);
+    }
+
+    thead {
+      background: #111827;
+      color: #e5e7eb;
+    }
+
+    th,
+    td {
+      padding: 8px 10px;
+      text-align: left;
+    }
+
+    tbody tr:nth-child(odd) {
+      background: #f9fafb;
+    }
+
+    tbody tr:nth-child(even) {
+      background: #ffffff;
+    }
+
+    tbody tr:hover {
+      background: #e5f3ff;
+    }
+
+    .badge-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 4px;
+    }
+
+    .badge {
+      font-size: 0.78rem;
+      padding: 3px 8px;
+      border-radius: 999px;
+      background: #eef2ff;
+      color: #3730a3;
+      border: 1px solid rgba(129, 140, 248, 0.6);
+    }
+
+    .note {
+      font-size: 0.75rem;
+      color: #6b7280;
+      margin-top: 6px;
+    }
+
+    .gallery-placeholder {
+      border-radius: 16px;
+      padding: 12px;
+      background: repeating-linear-gradient(
+          45deg,
+          rgba(209, 213, 219, 0.35),
+          rgba(209, 213, 219, 0.35) 10px,
+          rgba(243, 244, 246, 0.8) 10px,
+          rgba(243, 244, 246, 0.8) 20px
+        ),
+        #f9fafb;
+      border: 1px dashed rgba(148, 163, 184, 0.9);
+      text-align: center;
+      font-size: 0.84rem;
+      color: #4b5563;
+    }
+
+    footer {
+      padding: 18px 24px 26px;
+      background: #0b1120;
+      color: #9ca3af;
+      font-size: 0.78rem;
+      border-top: 1px solid rgba(55, 65, 81, 0.9);
+    }
+
+    .footer-inner {
+      max-width: 1024px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      opacity: 0.9;
+    }
+
+    .footer-links a:hover {
+      opacity: 1;
+      text-decoration: underline;
+    }
+
+    @media (max-width: 840px) {
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .hero {
+        gap: 24px;
+      }
+
+      header {
+        padding: 24px 16px;
+      }
+
+      main {
+        padding: 24px 16px 30px;
+      }
+
+      .specs-layout {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero-title {
+        font-size: 1.8rem;
+      }
+
+      .hero-image {
+        padding: 14px 14px 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header id="top">
+    <div class="container">
+      <nav class="nav">
+        <div class="nav-title">Mercedes-Benz W140</div>
+        <div class="nav-links">
+          <a href="#overview">개요</a>
+          <a href="#history">역사</a>
+          <a href="#design">디자인</a>
+          <a href="#specs">제원</a>
+        </div>
+      </nav>
+
+      <div class="hero">
+        <div>
+          <div class="hero-badge">
+            <span>1991–1998 S-Class</span>
+          </div>
+          <h1 class="hero-title">“마지막 정통 S클래스” W140</h1>
+          <p class="hero-subtitle">
+            1990년대 메르세데스-벤츠를 대표하는 플래그십 세단으로, 과감한
+            ‘오버엔지니어링’과 탱크 같은 존재감으로 지금까지도 레전드로
+            불리는 모델입니다.
+          </p>
+          <p class="hero-subtitle">
+            두꺼운 유리, 이중창, 묵직한 차체, 부드러운 V6·V8·V12 엔진까지 —
+            편의성과 안전에 타협 없이 모든 것을 담으려 했던 S클래스의 상징입니다.
+          </p>
+
+          <div class="hero-meta">
+            <span>생산 기간: 1991–1998년</span>
+            <span>세그먼트: 풀사이즈 럭셔리 세단</span>
+            <span>구동방식: FR</span>
+            <span>대표 차종: S320 · S500 · S600</span>
+          </div>
+        </div>
+
+        <div class="hero-image">
+          <div class="car-silhouette">
+            <div class="car-body"></div>
+            <div class="car-window"></div>
+            <div class="car-wheel left"></div>
+            <div class="car-wheel right"></div>
+            <div class="car-line"></div>
+          </div>
+          <div class="hero-image-footer">
+            <span>※ 실제 차량 사진 대신 미니멀한 W140 실루엣 그래픽</span>
+            <span>원하면 나중에 실제 사진으로 교체 가능</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <section id="overview">
+        <h2>W140 개요</h2>
+        <p class="section-subtitle">
+          W140은 1991년 등장한 메르세데스-벤츠 S클래스로, 초호화 플래그십 세단
+          시장에서 “기술력 과시용”에 가까운 모델이라는 평가를 받습니다.
+        </p>
+        <div class="card-grid">
+          <article class="card">
+            <h3>클래식 플래그십의 상징</h3>
+            <p>
+              당시 벤츠는 개발비에 큰 제약을 두지 않고 W140을
+              설계했습니다. 두꺼운 차체 강판, 이중접합유리, 고급 내장재 등
+              모든 부분에서 “과하다 싶을 정도”로 튼튼하게 만든 것이 특징입니다.
+            </p>
+         
+
