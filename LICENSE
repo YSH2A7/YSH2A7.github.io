@@ -18,3 +18,458 @@ FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
 COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
 IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <title>Porsche 911 GT3 소개</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui,
+        sans-serif;
+      line-height: 1.6;
+      color: #111;
+      background: #0b0b0d;
+    }
+
+    header {
+      background: linear-gradient(135deg, #111, #222 40%, #4b0000);
+      color: #fff;
+      padding: 40px 20px 60px;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .hero-title {
+      font-size: 2.6rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .hero-subtitle {
+      margin-top: 12px;
+      font-size: 1rem;
+      color: #ddd;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 32px;
+      margin-top: 32px;
+      align-items: center;
+    }
+
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      color: #f0f0f0;
+    }
+
+    .badge-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: #ff3131;
+      box-shadow: 0 0 8px rgba(255, 49, 49, 0.8);
+    }
+
+    .hero-image {
+      width: 100%;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: radial-gradient(circle at top, #444 0, #111 55%);
+      min-height: 220px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ccc;
+      font-size: 0.9rem;
+      text-align: center;
+      padding: 16px;
+    }
+
+    .hero-specs {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 28px;
+    }
+
+    .spec-card {
+      background: rgba(15, 15, 18, 0.95);
+      border-radius: 14px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 12px 14px;
+    }
+
+    .spec-label {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: #999;
+    }
+
+    .spec-value {
+      margin-top: 4px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #f5f5f5;
+    }
+
+    main {
+      background: radial-gradient(circle at top, #1d1d22 0, #050507 60%);
+      color: #f5f5f5;
+      padding: 40px 0 60px;
+    }
+
+    section {
+      margin-top: 40px;
+    }
+
+    h2 {
+      font-size: 1.6rem;
+      margin-bottom: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border-left: 4px solid #ff3131;
+      padding-left: 10px;
+    }
+
+    p {
+      font-size: 0.98rem;
+      color: #e0e0e0;
+    }
+
+    .two-column {
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2.3fr);
+      gap: 32px;
+      margin-top: 16px;
+    }
+
+    .card {
+      background: rgba(10, 10, 14, 0.95);
+      border-radius: 16px;
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      padding: 18px 20px;
+    }
+
+    .card h3 {
+      font-size: 1.1rem;
+      margin-bottom: 8px;
+    }
+
+    ul {
+      list-style: none;
+      margin-top: 8px;
+    }
+
+    ul li {
+      font-size: 0.95rem;
+      margin-bottom: 6px;
+      padding-left: 14px;
+      position: relative;
+      color: #d8d8d8;
+    }
+
+    ul li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: #ff3131;
+    }
+
+    .spec-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+      font-size: 0.95rem;
+    }
+
+    .spec-table th,
+    .spec-table td {
+      padding: 8px 10px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .spec-table th {
+      text-align: left;
+      color: #aaa;
+      width: 30%;
+      font-weight: 500;
+    }
+
+    .spec-table td {
+      color: #f5f5f5;
+    }
+
+    .tagline {
+      margin-top: 6px;
+      font-size: 0.9rem;
+      color: #bbbbbb;
+    }
+
+    .footer-note {
+      margin-top: 20px;
+      font-size: 0.8rem;
+      color: #888;
+    }
+
+    footer {
+      padding: 18px 20px 30px;
+      text-align: center;
+      font-size: 0.8rem;
+      color: #888;
+      background: #050506;
+      border-top: 1px solid #111;
+    }
+
+    @media (max-width: 900px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+      }
+      .hero-specs {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+      .two-column {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      header {
+        padding-top: 24px;
+      }
+      .hero-title {
+        font-size: 2rem;
+      }
+      .hero-specs {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <span class="hero-tag">
+        <span class="badge-dot"></span>
+        Porsche 911 GT3
+      </span>
+      <div class="hero-grid">
+        <div>
+          <h1 class="hero-title">Naturally Aspirated Track Weapon</h1>
+          <p class="hero-subtitle">
+            4.0리터 자연흡기 수평대향 6기통, 레이스카에서 바로 내려온 섀시와
+            에어로다이내믹. 911 GT3는 포르쉐의 모터스포츠 철학이 그대로 담긴
+            도로 위의 서킷 머신이다.
+          </p>
+
+          <div class="hero-specs">
+            <div class="spec-card">
+              <div class="spec-label">최고출력</div>
+              <div class="spec-value">약 510마력</div>
+              <div class="tagline">4.0L NA Flat-6</div>
+            </div>
+            <div class="spec-card">
+              <div class="spec-label">0–100 km/h</div>
+              <div class="spec-value">약 3.4초</div>
+              <div class="tagline">PDK 기준</div>
+            </div>
+            <div class="spec-card">
+              <div class="spec-label">최고속도</div>
+              <div class="spec-value">320 km/h</div>
+              <div class="tagline">서킷 지향 세팅</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-image">
+          911 GT3 차량 이미지를 이 영역에 넣으면 좋습니다.<br />
+          (예: &lt;img src="gt3.jpg" alt="Porsche 911 GT3" /&gt;)
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <!-- Overview -->
+      <section>
+        <h2>모델 개요</h2>
+        <p>
+          911 GT3는 포르쉐 911 패밀리 중에서도
+          <strong>서킷 주행에 최적화된 고성능 모델</strong>이다. 자연흡기
+          고회전 엔진과 가볍고 단단한 섀시, 그리고 공격적인 에어로 파츠를 통해
+          일반 도로 주행은 물론, 트랙 데이에서도 레이스카에 가까운 성능을
+          발휘한다.
+        </p>
+      </section>
+
+      <!-- Engine & Performance -->
+      <section>
+        <h2>엔진과 퍼포먼스</h2>
+        <div class="two-column">
+          <div class="card">
+            <h3>4.0L 자연흡기 Flat-6</h3>
+            <p>
+              911 GT3의 심장은
+              <strong>4.0리터 수평대향 6기통 자연흡기 엔진</strong>이다.
+              레드존은 9,000 rpm 근처에 위치하며, 고회전에서 터져 나오는
+              사운드는 이 차의 가장 큰 매력 중 하나이다.
+            </p>
+            <ul>
+              <li>최고출력: 약 510마력 (7,000 rpm 부근)</li>
+              <li>최대토크: 약 47.9 kg·m</li>
+              <li>변속기: 7단 PDK 또는 6단 수동 (세대별 상이)</li>
+              <li>구동방식: RR (리어 엔진, 후륜구동)</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h3>가속 성능</h3>
+            <p>
+              강력한 엔진과 가벼운 차체 덕분에 GT3는 순수한
+              <strong>드라이빙 퍼포먼스</strong>에 초점을 맞춘 세팅을
+              보여준다.
+            </p>
+            <ul>
+              <li>0–100 km/h: 약 3.4초 (PDK 기준)</li>
+              <li>최고속도: 약 320 km/h</li>
+              <li>뉘르부르크링 랩타임: 약 7분대 초반 (세대별 상이)</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Chassis & Aero -->
+      <section>
+        <h2>섀시와 에어로다이내믹</h2>
+        <div class="two-column">
+          <div class="card">
+            <h3>모터스포츠 직계 섀시</h3>
+            <ul>
+              <li>더블 위시본 전륜 서스펜션 (992 세대)</li>
+              <li>가변 댐핑과 차고 조절이 가능한 스포츠 서스펜션</li>
+              <li>강화된 브레이크 시스템 (세라믹 옵션 가능)</li>
+              <li>트랙을 고려한 휠 얼라인먼트 세팅</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>공격적인 에어로 패키지</h3>
+            <ul>
+              <li>대형 리어 윙 및 디퓨저</li>
+              <li>프론트 스플리터·에어 벤트로 다운포스 극대화</li>
+              <li>고속 주행 시 차체 안정성을 높이는 바디 키트</li>
+              <li>일부 모델은 DR S(가변 윙) 기능 탑재</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Interior -->
+      <section>
+        <h2>인테리어와 드라이빙 포지션</h2>
+        <div class="two-column">
+          <div class="card">
+            <h3>운전자 중심 콕핏</h3>
+            <p>
+              실내는 화려한 럭셔리보다
+              <strong>운전에 집중할 수 있는 구조</strong>로 설계되었다.
+              버킷 시트와 작은 직경의 스티어링 휠, 간결한 버튼 배치는
+              드라이버에게 서킷용 머신을 타고 있다는 감각을 전달한다.
+            </p>
+          </div>
+          <div class="card">
+            <h3>경량 소재 사용</h3>
+            <ul>
+              <li>카본파이버 버킷 시트</li>
+              <li>알칸타라/레더 혼합 마감</li>
+              <li>필요 최소한의 편의장비만 남긴 미니멀 구성</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Key Specs Table -->
+      <section>
+        <h2>주요 제원 (예시, 992 GT3 기준)</h2>
+        <div class="card">
+          <table class="spec-table">
+            <tr>
+              <th>엔진 형식</th>
+              <td>4.0L 수평대향 6기통 자연흡기</td>
+            </tr>
+            <tr>
+              <th>배기량</th>
+              <td>3,996 cc</td>
+            </tr>
+            <tr>
+              <th>최고출력</th>
+              <td>약 510마력</td>
+            </tr>
+            <tr>
+              <th>최대토크</th>
+              <td>약 47.9 kg·m</td>
+            </tr>
+            <tr>
+              <th>변속기</th>
+              <td>7단 PDK 또는 6단 수동</td>
+            </tr>
+            <tr>
+              <th>구동방식</th>
+              <td>후륜구동 (RR)</td>
+            </tr>
+            <tr>
+              <th>0–100 km/h</th>
+              <td>약 3.4초</td>
+            </tr>
+            <tr>
+              <th>최고속도</th>
+              <td>약 320 km/h</td>
+            </tr>
+            <tr>
+              <th>차체 크기</th>
+              <td>전장 약 4.6 m, 전폭 약 1.9 m (미러 제외)</td>
+            </tr>
+            <tr>
+              <th>공차중량</th>
+              <td>약 1,400 kg대 (사양에 따라 상이)</td>
+            </tr>
+          </table>
+          <p class="footer-note">
+            ※ 실제 수치는 연식·사양·국가별 모델에 따라 달라질 수 있습니다.
+          </p>
+        </div>
+      </section>
+    </div>
+  </main>
+
+    <footer>
+      © 2025 Porsche 911 GT3 Fan Page · 이 페이지는 비공식 팬 사이트 예시입니다.
+    </footer>
+</body>
+</html>
+
